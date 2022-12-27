@@ -1,0 +1,12 @@
+{
+  "name": "jsx-runtime",
+  "types": "./../dist/jsx-runtime.d.ts",
+  "module": "./../dist/jsx-runtime.js",
+  "exports": {
+    ".": {
+      "types": "./../dist/jsx-runtime.d.ts",
+      "import": "./../dist/jsx-runtime.js",
+      "default": "./../dist/jsx-runtime.js"
+    }
+  }
+}

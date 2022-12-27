@@ -1,0 +1,21 @@
+{
+  "include": ["src/**/*"],
+
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+
+    "outDir": "dist",
+
+    "jsx": "preserve",
+    "jsxImportSource": ".",
+
+    "strict": true,
+    "declaration": true,
+    "incremental": false,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "isolatedModules": true
+  }
+}
