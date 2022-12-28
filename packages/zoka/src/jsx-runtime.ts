@@ -4,6 +4,7 @@ export function jsx(type: JSX.Type, props: JSX.Props<unknown>): JSX.Element {
 
 export const jsxs = jsx;
 export const jsxDev = jsx;
+export const jsxDEV = jsx;
 
 export function Fragment(props: JSX.InherentProps) {
   return props?.children;
@@ -15,5 +16,5 @@ export function createElement(type: JSX.Type, props: JSX.Props<unknown>, ...chil
     else children.push(props.children);
   }
 
-  return jsx(type, { ...props, children: children as JSX.Children });
+  return jsx(type, { ...props, children });
 }

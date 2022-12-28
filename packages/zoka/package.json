@@ -1,0 +1,37 @@
+{
+  "name": "zoka",
+  "version": "0.0.1",
+  "files": [
+    "dist",
+    "jsx-runtime"
+  ],
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./jsx-runtime": {
+      "types": "./dist/jsx-runtime.d.ts",
+      "import": "./dist/jsx-runtime.js",
+      "default": "./dist/jsx-runtime.js"
+    },
+    "./jsx-dev-runtime": {
+      "types": "./dist/jsx-runtime.d.ts",
+      "import": "./dist/jsx-runtime.js",
+      "default": "./dist/jsx-runtime.js"
+    }
+  },
+  "scripts": {
+    "dev": "pnpm build --watch",
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "zoka-plugin-vite": "workspace:*",
+    "zoka": "workspace:*"
+  }
+}

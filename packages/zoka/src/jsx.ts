@@ -4,7 +4,7 @@ declare global {
   namespace JSX {
     type Primitive = string | number | boolean | null | undefined;
 
-    type Children = Primitive | Element | Array<Primitive | Element>;
+    type Children = Primitive | Element | Array<Primitive | Element | Children>;
 
     type Type = string | Component<unknown>;
 
