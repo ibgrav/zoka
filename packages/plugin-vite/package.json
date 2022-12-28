@@ -15,15 +15,16 @@
     }
   },
   "scripts": {
-    "build": "rimraf dist && tsc"
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "test": "vitest run"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.14.9",
-    "@babel/plugin-transform-react-jsx-development": "^7.16.7"
+    "@babel/plugin-transform-react-jsx": "7.14.9",
+    "@babel/plugin-transform-react-jsx-development": "7.16.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.7",
-    "@babel/parser": "^7.20.7",
-    "@types/babel__core": "^7.1.20"
+    "@babel/core": "7.20.7",
+    "@babel/parser": "7.20.7",
+    "@types/babel__core": "7.1.20"
   }
 }

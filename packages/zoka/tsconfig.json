@@ -1,21 +1,5 @@
 {
+  "extends": "config/tsconfig.base.json",
   "include": ["**/*.ts", "**/*.tsx"],
-
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-
-    "outDir": "dist",
-
-    "jsx": "react-jsx",
-    "jsxImportSource": ".",
-
-    "strict": true,
-    "declaration": true,
-    "incremental": false,
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "isolatedModules": true
-  }
+  "exclude": ["node_modules", "dist"]
 }

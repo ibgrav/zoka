@@ -4,40 +4,50 @@ importers:
 
   .:
     specifiers:
+      config: workspace:*
       prettier: 2.8.1
       rimraf: 3.0.2
       typescript: 4.9.4
       vite: 4.0.3
+      vite-plugin-zoka: workspace:*
       vitest: 0.26.2
+      zoka: workspace:*
     devDependencies:
+      config: link:packages/config
       prettier: 2.8.1
       rimraf: 3.0.2
       typescript: 4.9.4
       vite: 4.0.3
+      vite-plugin-zoka: link:packages/plugin-vite
       vitest: 0.26.2
+      zoka: link:packages/zoka
+
+  packages/config:
+    specifiers: {}
 
   packages/plugin-vite:
     specifiers:
-      '@babel/core': ^7.20.7
-      '@babel/parser': ^7.20.7
-      '@babel/plugin-transform-react-jsx': ^7.14.9
-      '@babel/plugin-transform-react-jsx-development': ^7.16.7
-      '@types/babel__core': ^7.1.20
+      '@babel/core': 7.20.7
+      '@babel/parser': 7.20.7
+      '@babel/plugin-transform-react-jsx': 7.14.9
+      '@babel/plugin-transform-react-jsx-development': 7.16.7
+      '@types/babel__core': 7.1.20
     dependencies:
-      '@babel/plugin-transform-react-jsx': 7.20.7_@babel+core@7.20.7
-      '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.20.7
+      '@babel/plugin-transform-react-jsx': 7.14.9_@babel+core@7.20.7
+      '@babel/plugin-transform-react-jsx-development': 7.16.7_@babel+core@7.20.7
     devDependencies:
       '@babel/core': 7.20.7
       '@babel/parser': 7.20.7
       '@types/babel__core': 7.1.20
 
-  packages/zoka:
+  packages/test:
     specifiers:
-      vite-plugin-zoka: workspace:*
       zoka: workspace:*
-    devDependencies:
-      vite-plugin-zoka: link:../plugin-vite
-      zoka: 'link:'
+    dependencies:
+      zoka: link:../zoka
+
+  packages/zoka:
+    specifiers: {}
 
 packages:
 
@@ -210,14 +220,28 @@ packages:
       '@babel/helper-plugin-utils': 7.20.2
     dev: false
 
-  /@babel/plugin-transform-react-jsx-development/7.18.6_@babel+core@7.20.7:
-    resolution: {integrity: sha512-SA6HEjwYFKF7WDjWcMcMGUimmw/nhNRDWxr+KaLSCrkD/LMDBvWRmHAYgE1HDeF8KUuI8OAu+RT6EOtKxSW2qA==}
+  /@babel/plugin-transform-react-jsx-development/7.16.7_@babel+core@7.20.7:
+    resolution: {integrity: sha512-RMvQWvpla+xy6MlBpPlrKZCMRs2AGiHOGHY3xRwl0pEeim348dDyxeH4xBsMPbIMhujeq7ihE702eM2Ew0Wo+A==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.20.7
       '@babel/plugin-transform-react-jsx': 7.20.7_@babel+core@7.20.7
+    dev: false
+
+  /@babel/plugin-transform-react-jsx/7.14.9_@babel+core@7.20.7:
+    resolution: {integrity: sha512-30PeETvS+AeD1f58i1OVyoDlVYQhap/K20ZrMjLmmzmC2AYR/G43D4sdJAaDAqCD3MYpSWbmrz3kES158QSLjw==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.20.7
+      '@babel/helper-annotate-as-pure': 7.18.6
+      '@babel/helper-module-imports': 7.18.6
+      '@babel/helper-plugin-utils': 7.20.2
+      '@babel/plugin-syntax-jsx': 7.18.6_@babel+core@7.20.7
+      '@babel/types': 7.20.7
     dev: false
 
   /@babel/plugin-transform-react-jsx/7.20.7_@babel+core@7.20.7:

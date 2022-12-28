@@ -1,1 +1,2 @@
-import "./jsx";
+export * from "./jsx";
+export * from "./render";

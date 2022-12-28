@@ -1,5 +1,7 @@
+export const IS_ELEMENT = Symbol("element");
+
 export function jsx(type: JSX.Type, props: JSX.Props<unknown>): JSX.Element {
-  return { type, props };
+  return [IS_ELEMENT, type, props];
 }
 
 export const jsxs = jsx;
@@ -11,10 +13,10 @@ export function Fragment(props: JSX.InherentProps) {
 }
 
 export function createElement(type: JSX.Type, props: JSX.Props<unknown>, ...children: JSX.Children[]) {
-  if (props?.children) {
-    if (Array.isArray(props.children)) children.push(...props.children);
-    else children.push(props.children);
+  if (children.length > 0) {
+    if (props.children !== undefined) props.children = [props.children, ...children];
+    else props.children = children;
   }
 
-  return jsx(type, { ...props, children });
+  return jsx(type, props);
 }

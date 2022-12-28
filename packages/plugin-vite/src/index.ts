@@ -2,7 +2,7 @@ import type { Plugin, ResolvedConfig } from "vite";
 import type { ParserPlugin } from "@babel/parser";
 import { transformAsync } from "@babel/core";
 
-export default function zokaPluginVite(): Plugin[] {
+export default function vitePluginZoka(): Plugin[] {
   let config: ResolvedConfig;
 
   const jsxPlugin: Plugin = {

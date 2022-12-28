@@ -4,7 +4,7 @@ declare global {
   namespace JSX {
     type Primitive = string | number | boolean | null | undefined;
 
-    type Children = Primitive | Element | Array<Primitive | Element | Children>;
+    type Children = Primitive | Element | Array<Children>;
 
     type Type = string | Component<unknown>;
 
@@ -17,12 +17,9 @@ declare global {
 
     type Props<P> = P & InherentProps;
 
-    type Component<P> = (props: Props<P>) => Element | Promise<Element>;
+    type Component<P> = (props: Props<P>) => Element;
 
-    interface Element {
-      type: Type;
-      props: Props<unknown>;
-    }
+    type Element = [Symbol, Type, Props<unknown>];
 
     interface IntrinsicElements {
       [key: string]: Props<Record<string, string>>;

@@ -29,9 +29,5 @@
     "dev": "pnpm build --watch",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "test": "vitest run"
-  },
-  "devDependencies": {
-    "vite-plugin-zoka": "workspace:*",
-    "zoka": "workspace:*"
   }
 }
