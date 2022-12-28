@@ -1,5 +1,5 @@
 {
-  "name": "zoka-plugin-vite",
+  "name": "vite-plugin-zoka",
   "version": "0.0.1",
   "type": "commonjs",
   "files": [

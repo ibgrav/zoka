@@ -4,10 +4,10 @@ importers:
 
   .:
     specifiers:
-      prettier: ^2.8.1
-      rimraf: ^3.0.2
+      prettier: 2.8.1
+      rimraf: 3.0.2
       typescript: 4.9.4
-      vite: ^4.0.3
+      vite: 4.0.3
       vitest: 0.26.2
     devDependencies:
       prettier: 2.8.1
@@ -23,8 +23,6 @@ importers:
       '@babel/plugin-transform-react-jsx': ^7.14.9
       '@babel/plugin-transform-react-jsx-development': ^7.16.7
       '@types/babel__core': ^7.1.20
-      typescript: 4.9.4
-      vite: ^4.0.3
     dependencies:
       '@babel/plugin-transform-react-jsx': 7.20.7_@babel+core@7.20.7
       '@babel/plugin-transform-react-jsx-development': 7.18.6_@babel+core@7.20.7
@@ -32,24 +30,14 @@ importers:
       '@babel/core': 7.20.7
       '@babel/parser': 7.20.7
       '@types/babel__core': 7.1.20
-      typescript: 4.9.4
-      vite: 4.0.3
 
   packages/zoka:
     specifiers:
-      rimraf: ^3.0.2
-      typescript: 4.9.4
-      vite: ^4.0.3
-      vitest: ^0.26.2
+      vite-plugin-zoka: workspace:*
       zoka: workspace:*
-      zoka-plugin-vite: workspace:*
     devDependencies:
-      rimraf: 3.0.2
-      typescript: 4.9.4
-      vite: 4.0.3
-      vitest: 0.26.2
+      vite-plugin-zoka: link:../plugin-vite
       zoka: 'link:'
-      zoka-plugin-vite: link:../plugin-vite
 
 packages:
 

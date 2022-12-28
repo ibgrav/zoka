@@ -31,7 +31,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "zoka-plugin-vite": "workspace:*",
+    "vite-plugin-zoka": "workspace:*",
     "zoka": "workspace:*"
   }
 }
