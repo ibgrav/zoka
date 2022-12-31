@@ -1,6 +1,8 @@
 {
+  "extends": "./tsconfig.json",
   "include": ["src/**/*.ts"],
-  "exclude": ["**/*.test.*"],
+  "exclude": ["src/**/*.test.*"],
+
   "compilerOptions": {
     "outDir": "dist",
     "target": "ES2020",

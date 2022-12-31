@@ -1,3 +1,9 @@
 export function App() {
-  return <div className={"test"}>test!</div>;
+  return (
+    <main className={"test"}>
+      <h1>Hello World!</h1>
+      <br />
+      <a href="/test">Test Link</a>
+    </main>
+  );
 }

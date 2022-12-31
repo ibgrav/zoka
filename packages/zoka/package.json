@@ -1,33 +1,38 @@
 {
   "name": "zoka",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "type": "module",
   "files": [
     "dist",
-    "jsx-runtime"
+    "jsx-runtime",
+    "jsx-dev-runtime"
   ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     },
     "./jsx-runtime": {
       "types": "./dist/jsx-runtime.d.ts",
-      "import": "./dist/jsx-runtime.js",
-      "default": "./dist/jsx-runtime.js"
+      "import": "./dist/jsx-runtime.mjs",
+      "require": "./dist/jsx-runtime.js"
     },
     "./jsx-dev-runtime": {
       "types": "./dist/jsx-runtime.d.ts",
-      "import": "./dist/jsx-runtime.js",
-      "default": "./dist/jsx-runtime.js"
+      "import": "./dist/jsx-runtime.mjs",
+      "require": "./dist/jsx-runtime.js"
     }
   },
   "scripts": {
     "dev": "pnpm build --watch",
-    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.esm.json",
     "test": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "4.9.4"
   }
 }
