@@ -9,22 +9,22 @@
   ],
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": null
     },
     "./jsx-runtime": {
       "types": "./dist/jsx-runtime.d.ts",
-      "import": "./dist/jsx-runtime.mjs",
-      "require": "./dist/jsx-runtime.js"
+      "import": "./dist/jsx-runtime.js",
+      "require": null
     },
     "./jsx-dev-runtime": {
       "types": "./dist/jsx-runtime.d.ts",
-      "import": "./dist/jsx-runtime.mjs",
-      "require": "./dist/jsx-runtime.js"
+      "import": "./dist/jsx-runtime.js",
+      "require": null
     }
   },
   "scripts": {

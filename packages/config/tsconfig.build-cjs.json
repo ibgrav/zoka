@@ -2,10 +2,11 @@
   "extends": "./tsconfig.base.json",
 
   "compilerOptions": {
-    "outDir": "dist",
     "target": "ES2015",
     "module": "CommonJS",
 
-    "noEmit": false
+    "noEmit": false,
+    "declaration": true,
+    "incremental": false
   }
 }

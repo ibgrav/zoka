@@ -1,8 +1,10 @@
-import { render } from "zoka";
+import { renderToString } from "zoka";
 import { App } from "./App";
+
+import "./main.css";
 
 const root = document.getElementById("root")!;
 
-const result = render(<App />);
+const result = renderToString(<App />);
 
 root.innerHTML = result;

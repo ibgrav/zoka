@@ -1,5 +1,6 @@
-import { isElement, isFunction, isString, isVoidTag } from "../is";
+import { isArray, isElement, isFunction, isString, isVoidTag } from "../is";
 import { primitiveToString } from "./primitive-to-string";
+import { renderAttributes } from "./render-attributes";
 
 export let renderToString = (value: unknown): string => {
   return primitiveToString(value, () => {
@@ -11,18 +12,19 @@ export let renderToString = (value: unknown): string => {
       }
 
       if (isString(type)) {
-        let attrs = renderToString({ ...props, children: undefined });
-        let children = renderToString(props.children);
+        let attributes = renderAttributes(props);
 
         if (isVoidTag(type)) {
-          return `<${type}${attrs} />`;
+          return `<${type}${attributes} />`;
         }
 
-        return `<${type}${attrs}>${children}</${type}>`;
+        let children = renderToString(props.children);
+
+        return `<${type}${attributes}>${children}</${type}>`;
       }
     }
 
-    if (Array.isArray(value)) {
+    if (isArray(value)) {
       return value.map(renderToString).join("");
     }
 

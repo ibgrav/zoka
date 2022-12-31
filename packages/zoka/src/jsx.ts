@@ -22,7 +22,7 @@ declare global {
     type Element = [Symbol, Type, Props<unknown>];
 
     interface IntrinsicElements {
-      [key: string]: Props<Record<string, string>>;
+      [key: string]: Props<Record<string, Attribute>>;
     }
   }
 }

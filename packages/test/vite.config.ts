@@ -1,6 +1,10 @@
-import { defineConfig } from "vite";
+import { defineConfig, splitVendorChunkPlugin } from "vite";
 import zoka from "vite-plugin-zoka";
 
 export default defineConfig({
-  plugins: [zoka()],
+  plugins: [splitVendorChunkPlugin(), zoka()],
+  build: {
+    modulePreload: false,
+    polyfillModulePreload: false,
+  },
 });
