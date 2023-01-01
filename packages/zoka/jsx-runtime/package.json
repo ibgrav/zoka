@@ -1,14 +1,14 @@
 {
   "name": "jsx-runtime",
   "type": "module",
+  "main": "./../dist/jsx-runtime.cjs",
+  "module": "./../dist/jsx-runtime.mjs",
   "types": "./../dist/jsx-runtime.d.ts",
-  "main": "./../dist/jsx-runtime.js",
-  "module": "./../dist/jsx-runtime.js",
   "exports": {
     ".": {
       "types": "./../dist/jsx-runtime.d.ts",
-      "import": "./../dist/jsx-runtime.js",
-      "require": null
+      "import": "./../dist/jsx-runtime.mjs",
+      "require": "./../dist/jsx-runtime.cjs"
     }
   }
 }

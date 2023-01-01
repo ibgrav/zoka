@@ -1,13 +1,12 @@
 {
   "name": "@ibgrav/zoka",
+  "packageManager": "pnpm@7.21.0",
   "private": true,
   "scripts": {
     "dev": "pnpm --stream --parallel -F test -F zoka dev"
   },
   "devDependencies": {
     "prettier": "2.8.1",
-    "config": "workspace:*",
-    "zoka": "workspace:*",
-    "vite-plugin-zoka": "workspace:*"
+    "config": "workspace:*"
   }
 }
