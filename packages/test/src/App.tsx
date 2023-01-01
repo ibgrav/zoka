@@ -7,7 +7,9 @@ export function App() {
         <a href="/test" className="underline hover:underline-offset-4">
           Test Link
         </a>
-        <div className={["text-red-700", "font-bold"]}>className with array</div>
+        <div data-test={["one", "two"]} className={["text-red-700", "font-bold", { underline: true }]}>
+          className with array
+        </div>
       </main>
 
       <footer className="mt-10">This is my footer</footer>

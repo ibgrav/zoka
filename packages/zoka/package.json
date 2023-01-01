@@ -1,6 +1,6 @@
 {
   "name": "zoka",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "files": [
     "dist",
@@ -28,12 +28,9 @@
     }
   },
   "scripts": {
-    "dev": "pnpm build --watch",
-    "build": "unbuild",
-    "test": "vitest run"
+    "build": "unbuild"
   },
   "devDependencies": {
-    "mkdist": "^1.0.0",
     "typescript": "4.9.4",
     "unbuild": "1.0.2"
   }
