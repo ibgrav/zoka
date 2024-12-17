@@ -1,0 +1,13 @@
+---
+const { api } = Astro.locals;
+
+const tree = await api.getGitTree({
+  owner: "ibgrav",
+  repo: "zoka",
+  sha: "main",
+});
+---
+
+<div>editor!</div>
+
+<pre>{JSON.stringify(tree, null, 2)}</pre>

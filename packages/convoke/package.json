@@ -1,0 +1,30 @@
+{
+  "name": "zoka",
+  "type": "module",
+  "version": "0.0.0",
+  "files": ["src"],
+  "exports": {
+    ".": {
+      "default": "./src/integration.ts"
+    },
+    "./locals": {
+      "default": "./src/types/locals.d.ts"
+    }
+  },
+  "scripts": {
+    "astro": "astro",
+    "vitest": "vitest"
+  },
+  "peerDependencies": {
+    "astro": ">=5"
+  },
+  "dependencies": {
+    "@octokit/auth-oauth-user": "5.1.1",
+    "@octokit/rest": "21.0.2",
+    "jose": "5.9.6"
+  },
+  "devDependencies": {
+    "astro": "5.0.9",
+    "vitest": "beta"
+  }
+}

@@ -1,11 +1,12 @@
 {
-  "name": "@ibgrav/zoka",
-  "packageManager": "pnpm@7.21.0",
+  "packageManager": "pnpm@9.14.2",
   "private": true,
   "scripts": {
-    "dev": "pnpm -F zoka build && pnpm -F test dev"
+    "dev": "pnpm -F example dev",
+    "check": "biome check",
+    "format": "biome format --write"
   },
   "devDependencies": {
-    "prettier": "2.8.1"
+    "@biomejs/biome": "1.9.4"
   }
 }
