@@ -28,7 +28,7 @@ export const GET: APIRoute = async (ctx) => {
 
     ctx.cookies.set(COOKIE.SESSION, jwt, {
       secure: import.meta.env.PROD,
-      maxAge: 60 * 60 * 6, // 6h
+      maxAge: 60 * 60 * 8, // 8h
       sameSite: "lax",
       httpOnly: true,
       path: "/",

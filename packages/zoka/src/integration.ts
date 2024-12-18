@@ -14,6 +14,8 @@ export default function zokaAstroIntegration(): AstroIntegration {
           env: {
             schema: {
               JWT_SECRET: envField.string({ access: "secret", context: "server" }),
+              GITHUB_REPO_ORG: envField.string({ access: "public", context: "server" }),
+              GITHUB_REPO_NAME: envField.string({ access: "public", context: "server" }),
               GITHUB_CLIENT_ID: envField.string({ access: "public", context: "server" }),
               GITHUB_CLIENT_SECRET: envField.string({ access: "secret", context: "server" }),
             },
@@ -44,7 +46,7 @@ export default function zokaAstroIntegration(): AstroIntegration {
       "astro:config:done": (opts) => {
         opts.injectTypes({
           filename: "locals.d.ts",
-          content: `import("zoka/locals")`,
+          content: `import("zoka/astro/locals")`,
         });
       },
     },

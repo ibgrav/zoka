@@ -6,6 +6,6 @@ interface GetGitTreeArgs {
   sha: string;
 }
 
-export interface API {
+export interface GitApi {
   getGitTree: (args: GetGitTreeArgs) => Promise<GitTree[]>;
 }

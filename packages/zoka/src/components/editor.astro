@@ -1,9 +1,12 @@
 ---
+import { GITHUB_REPO_ORG } from "astro:env/server";
+import { GITHUB_REPO_NAME } from "astro:env/server";
+
 const { api } = Astro.locals;
 
 const tree = await api.getGitTree({
-  owner: "ibgrav",
-  repo: "zoka",
+  owner: GITHUB_REPO_ORG,
+  repo: GITHUB_REPO_NAME,
   sha: "main",
 });
 ---

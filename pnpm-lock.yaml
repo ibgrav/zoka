@@ -22,9 +22,9 @@ importers:
         version: 5.0.9(@types/node@22.10.2)(rollup@4.28.1)(typescript@5.7.2)
       zoka:
         specifier: workspace:*
-        version: link:../packages/convoke
+        version: link:../packages/zoka
 
-  packages/convoke:
+  packages/zoka:
     dependencies:
       '@octokit/auth-oauth-user':
         specifier: 5.1.1

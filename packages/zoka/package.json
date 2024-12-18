@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "files": ["src"],
   "exports": {
-    ".": {
+    "./astro": {
       "default": "./src/integration.ts"
     },
-    "./locals": {
+    "./astro/locals": {
       "default": "./src/types/locals.d.ts"
     }
   },
