@@ -18,9 +18,12 @@
   ],
   "d1_databases": [
     {
-      "binding": "DATABASE",
-      "database_name": "zoka-sandbox",
-      "database_id": "1f662c96-a593-499c-9e6e-55a1dd52ec8f"
+      "binding": "DB",
+      "database_name": "zoka-production",
+      "database_id": "18fec218-6ed6-47c8-b141-9e918e313dea",
+      "preview_database_id": "1f662c96-a593-499c-9e6e-55a1dd52ec8f",
+      "migrations_table": "migrations",
+      "migrations_dir": "migrations"
     }
   ]
 }

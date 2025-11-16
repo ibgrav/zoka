@@ -1,48 +1,31 @@
 import * as v from "valibot";
+import type * as DB from "./database";
+
+export const User = v.object({
+  id: v.number(),
+  storyblok_user_id: v.nullable(v.string()),
+  contentful_user_id: v.nullable(v.string()),
+  created_at: v.pipe(v.string(), v.nonEmpty()),
+  updated_at: v.pipe(v.string(), v.nonEmpty())
+}) satisfies v.GenericSchema<DB.User>;
 
 export type Tokens = v.InferOutput<typeof Tokens>;
 export const Tokens = v.object({
-  access_token: v.string(),
-  refresh_token: v.string()
-});
-
-export type User = v.InferOutput<typeof User>;
-export const User = v.object({
-  id: v.pipe(
-    v.string(),
-    v.transform((id) => id.toString())
-  )
-});
-
-export type StoryblokMetadata = v.InferOutput<typeof StoryblokMetadata>;
-export const StoryblokMetadata = v.object({
-  user: v.object({ id: v.number(), friendly_name: v.string() }),
-  space: v.object({ id: v.number(), name: v.string() }),
-  roles: v.array(v.object({ name: v.string() }))
-});
-
-export type ContentfulMetadata = v.InferOutput<typeof ContentfulMetadata>;
-export const ContentfulMetadata = v.object({
-  user: v.object({
-    sys: v.object({ id: v.string() }),
-    email: v.string(),
-    firstName: v.string(),
-    lastName: v.string()
-  })
+  access_token: v.pipe(v.string(), v.nonEmpty()),
+  refresh_token: v.pipe(v.string(), v.nonEmpty())
 });
 
 export type Session = v.InferOutput<typeof Session>;
 export const Session = v.object({
+  user: User,
   contentful: v.optional(
     v.object({
-      tokens: Tokens,
-      metadata: ContentfulMetadata
+      tokens: Tokens
     })
   ),
   storyblok: v.optional(
     v.object({
-      tokens: Tokens,
-      metadata: StoryblokMetadata
+      tokens: Tokens
     })
   )
 });
