@@ -15,7 +15,7 @@ interface ProviderOptions {
   clientSecret: string;
 }
 
-export class Provider {
+export class Provider<T = null> {
   name: string;
   base: string;
   scope: string;
@@ -28,6 +28,10 @@ export class Provider {
     this.scope = scope;
     this.clientId = clientId;
     this.clientSecret = clientSecret;
+  }
+
+  async getMetadata(_tokens: Tokens): Promise<T> {
+    return null as T;
   }
 
   getRedirectUri(url: URL): URL {

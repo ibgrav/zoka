@@ -1,38 +1,5 @@
 ---
-import { ManagementApiClient } from "@storyblok/management-api-client";
-import contentful from "contentful-management";
-import { parse } from "valibot";
-import { StoryblokUser } from "~/lib/schema";
 
-let contentfulOrgs: any;
-let storyblokUser: StoryblokUser | null = null;
-let storyblokSpaces: any;
-
-if (Astro.locals.tokens.contentful) {
-  const client = contentful.createClient(
-    { accessToken: Astro.locals.tokens.contentful.access_token },
-    { type: "plain" }
-  );
-
-  contentfulOrgs = (await client.organization.getAll()).items;
-}
-
-if (Astro.locals.tokens.storyblok) {
-  const client = new ManagementApiClient({
-    token: { oauthToken: `Bearer ${Astro.locals.tokens.storyblok.access_token}` },
-    region: "eu"
-  });
-
-  const spaceResponse = await fetch("https://api.storyblok.com/oauth/user_info", {
-    headers: {
-      Authorization: `Bearer ${Astro.locals.tokens.storyblok.access_token}`
-    }
-  });
-
-  storyblokUser = parse(StoryblokUser, await spaceResponse.json());
-
-  storyblokSpaces = await client.components.list({ path: { space_id: 288526437553624 } });
-}
 ---
 
 <html lang="en">
@@ -46,6 +13,6 @@ if (Astro.locals.tokens.storyblok) {
     <a href="/auth/contentful/login">Login with Contentful</a>
     <a href="/auth/storyblok/login">Login with Storyblok</a>
 
-    <pre>{JSON.stringify({ tokens: Astro.locals.tokens, contentfulOrgs, storyblokUser, storyblokSpaces }, null, 2)}</pre>
+    <pre>{JSON.stringify({ session: Astro.locals.session }, null, 2)}</pre>
   </body>
 </html>
