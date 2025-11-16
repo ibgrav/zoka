@@ -17,13 +17,9 @@ export const GET: APIRoute = async ({ url, params, locals, cookies, redirect }) 
 
     const session = crypto.randomUUID();
 
-    await locals.runtime.env.SESSION.put(
-      session,
-      JSON.stringify({
-        ...locals.tokens,
-        [name]: tokens
-      })
-    );
+    await locals.runtime.env.SESSION.put(session, JSON.stringify({ ...locals.tokens, [name]: tokens }), {
+      expirationTtl: 60 * 60 * 24 * 30
+    });
 
     cookies.set("session", session, {
       path: "/",
