@@ -9,23 +9,33 @@ export const GET: APIRoute = async ({ url, params, locals, cookies, redirect }) 
   const state = url.searchParams.get("state");
 
   if (!code || !state || state !== cookies.get("state")?.value) {
-    return redirect("/", 307);
+    return redirect("/404", 307);
   }
 
-  const callbackUri = new URL(`/auth/${params.provider}/callback`, url.origin);
-  const tokens = await provider.onCallback(code, callbackUri);
+  try {
+    const tokens = await provider.onCallback(url, code);
 
-  const session = crypto.randomUUID();
+    const session = crypto.randomUUID();
 
-  await locals.runtime.env.SESSION.put(session, JSON.stringify({ [name]: tokens }));
+    await locals.runtime.env.SESSION.put(
+      session,
+      JSON.stringify({
+        ...locals.tokens,
+        [name]: tokens
+      })
+    );
 
-  cookies.set("session", session, {
-    path: "/",
-    secure: true,
-    httpOnly: true,
-    sameSite: "strict",
-    maxAge: 60 * 60 * 24 * 30
-  });
+    cookies.set("session", session, {
+      path: "/",
+      secure: true,
+      httpOnly: true,
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 30
+    });
 
-  return redirect("/", 307);
+    return redirect("/", 307);
+  } catch (e) {
+    console.error(e);
+    return redirect("/", 307);
+  }
 };

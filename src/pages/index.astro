@@ -1,8 +1,3 @@
----
-const session = Astro.cookies.get("session")?.value;
-const tokens = JSON.parse((session ? await Astro.locals.runtime.env.SESSION.get(session) : null) ?? "{}");
----
-
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -13,6 +8,6 @@ const tokens = JSON.parse((session ? await Astro.locals.runtime.env.SESSION.get(
   <body>
     <a href="/auth/contentful/login">Login with Contentful</a>
     <a href="/auth/storyblok/login">Login with Storyblok</a>
-    <pre>{JSON.stringify({ session, tokens }, null, 2)}</pre>
+    <pre>{JSON.stringify(Astro.locals.tokens, null, 2)}</pre>
   </body>
 </html>

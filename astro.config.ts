@@ -1,5 +1,6 @@
 import cloudflare from "@astrojs/cloudflare";
 import { defineConfig } from "astro/config";
+import mkcert from "vite-plugin-mkcert";
 
 export default defineConfig({
   output: "server",
@@ -10,6 +11,7 @@ export default defineConfig({
     imageService: "compile"
   }),
   vite: {
+    plugins: [mkcert()],
     build: {
       minify: false
     }

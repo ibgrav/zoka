@@ -10,12 +10,11 @@ export const GET: APIRoute = ({ url, params, locals, cookies, redirect }) => {
     path: "/",
     secure: true,
     httpOnly: true,
-    sameSite: "strict",
+    sameSite: "lax",
     maxAge: 60 * 10
   });
 
-  const redirectUri = new URL(`/auth/${params.provider}/callback`, url.origin);
-  const loginUri = provider.getLoginUrl(state, redirectUri);
+  const loginUri = provider.getLoginUrl(url, state);
 
   return redirect(loginUri.href, 307);
 };
