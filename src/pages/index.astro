@@ -1,6 +1,6 @@
 ---
-const session = Astro.cookies.get("session")!.value;
-const tokens = JSON.parse((await Astro.locals.runtime.env.SESSION.get(session)) ?? "{}");
+const session = Astro.cookies.get("session")?.value;
+const tokens = JSON.parse((session ? await Astro.locals.runtime.env.SESSION.get(session) : null) ?? "{}");
 ---
 
 <html lang="en">

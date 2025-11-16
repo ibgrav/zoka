@@ -6,13 +6,6 @@
     "build": "pnpm types && astro build",
     "types": "astro sync && wrangler types .astro/worker.d.ts"
   },
-  "dependencies": {
-    "@orpc/client": "1.11.2",
-    "@orpc/contract": "1.11.2",
-    "@orpc/openapi": "1.11.2",
-    "@orpc/server": "1.11.2",
-    "valibot": "1.1.0"
-  },
   "devDependencies": {
     "@astrojs/cloudflare": "12.6.10",
     "@astrojs/node": "9.5.0",
@@ -20,6 +13,7 @@
     "astro": "5.15.8",
     "prettier": "3.6.2",
     "typescript": "5.9.3",
+    "valibot": "1.1.0",
     "wrangler": "4.47.0"
   }
 }
