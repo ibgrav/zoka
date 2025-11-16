@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "pnpm types && astro build",
-    "types": "wrangler types .astro/worker.d.ts && astro sync"
+    "types": "astro sync && wrangler types .astro/worker.d.ts"
   },
   "dependencies": {
     "@orpc/client": "1.11.2",
