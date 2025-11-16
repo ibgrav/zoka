@@ -13,6 +13,7 @@ export type User = Selectable<UserTable>;
 
 export interface UserTable extends TrackedTable {
   id: Generated<number>;
-  storyblok_user_id: string | null;
   contentful_user_id: string | null;
+  storyblok_user_id: string | null;
+  wordpress_user_id: string | null;
 }

@@ -27,6 +27,6 @@ export const GET: APIRoute = (ctx) => {
 
     await setSession(ctx, { user, contentful: { tokens } });
 
-    return ctx.redirect("/", 307);
+    return ctx.redirect("/dash", 307);
   });
 };

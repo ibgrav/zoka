@@ -1,0 +1,11 @@
+---
+import Layout from "~/templates/layout.astro";
+
+if (!Astro.locals.session) {
+  return Astro.redirect("/auth/login");
+}
+---
+
+<Layout title="Dash | Zoka">
+  <pre>{JSON.stringify({ session: Astro.locals.session }, null, 2)}</pre>
+</Layout>

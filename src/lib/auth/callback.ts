@@ -8,13 +8,13 @@ export const callback = async (ctx: APIContext, handler: CallbackHandler): Promi
 
   if (!code || !state || state !== ctx.cookies.get("state")?.value) {
     console.error({ error: "Invalid callback request", code, state, stateCookie: ctx.cookies.get("state")?.value });
-    return ctx.redirect("/", 307);
+    return ctx.redirect("/auth/login", 307);
   }
 
   try {
     return await handler(code);
   } catch (error) {
     console.error(error);
-    return ctx.redirect("/", 307);
+    return ctx.redirect("/auth/login", 307);
   }
 };

@@ -1,18 +1,7 @@
 ---
-
+import Layout from "~/templates/layout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
-  </head>
-  <body>
-    <a href="/auth/contentful/login">Login with Contentful</a>
-    <a href="/auth/storyblok/login">Login with Storyblok</a>
-
-    <pre>{JSON.stringify({ session: Astro.locals.session }, null, 2)}</pre>
-  </body>
-</html>
+<Layout title="Zoka">
+  <pre class="mockup-code w-full">{JSON.stringify({ session: Astro.locals.session }, null, 2)}</pre>
+</Layout>

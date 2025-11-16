@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  logs: false;
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+@layer base {
+  html,
+  body {
+    @apply h-full;
+  }
+}

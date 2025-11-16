@@ -1,11 +1,12 @@
+import * as v from "valibot";
 import type { Tokens } from "~/lib/schema";
 
-interface OauthTokenResponse {
-  access_token: string;
-  refresh_token: string;
-  error?: string;
-  error_description?: string;
-}
+const OauthTokenResponseSchema = v.object({
+  access_token: v.pipe(v.string(), v.nonEmpty()),
+  refresh_token: v.optional(v.pipe(v.string())),
+  error: v.optional(v.string()),
+  error_description: v.optional(v.string())
+});
 
 interface ProviderOptions {
   name: string;
@@ -30,16 +31,12 @@ export class Provider {
     this.clientSecret = clientSecret;
   }
 
-  async getUserId(_tokens: Tokens): Promise<string> {
-    return "";
-  }
-
   getRedirectUri(url: URL): URL {
-    return new URL(`/auth/${this.name}/callback`, url.origin);
+    return new URL(`/auth/callback/${this.name}`, url.origin);
   }
 
   getLoginUrl(url: URL, state: string): URL {
-    const login = new URL("/oauth/authorize", this.base);
+    const login = new URL(`${this.base}/authorize`);
 
     login.searchParams.set("redirect_uri", this.getRedirectUri(url).href);
     login.searchParams.set("client_id", this.clientId);
@@ -78,7 +75,7 @@ export class Provider {
   }
 
   async getTokens(body: URLSearchParams): Promise<Tokens> {
-    const res = await fetch(new URL("/oauth/token", this.base), {
+    const res = await fetch(new URL(`${this.base}/token`), {
       body,
       method: "POST",
       headers: {
@@ -87,7 +84,7 @@ export class Provider {
       }
     });
 
-    const data = (await res.json()) as OauthTokenResponse;
+    const data = v.parse(OauthTokenResponseSchema, await res.json());
 
     if (data.error) {
       throw new Error(data.error_description ?? data.error);

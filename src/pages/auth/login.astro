@@ -1,0 +1,44 @@
+---
+import * as providers from "~/lib/providers";
+import IconContentful from "~/templates/icon-contentful.astro";
+import IconStoryblok from "~/templates/icon-storyblok.astro";
+import IconWordpress from "~/templates/icon-wordpress.astro";
+import Layout from "~/templates/layout.astro";
+
+const state = crypto.randomUUID();
+
+Astro.cookies.set("state", state, {
+  path: "/",
+  secure: true,
+  httpOnly: true,
+  sameSite: "lax",
+  maxAge: 60 * 10
+});
+
+const contentfulLoginUrl = providers.contentful.getLoginUrl(Astro.url, state);
+const storyblokLoginUrl = providers.storyblok.getLoginUrl(Astro.url, state);
+const wordpressLoginUrl = providers.wordpress.getLoginUrl(Astro.url, state);
+---
+
+<Layout title="Login | Zoka">
+  <ul class="flex flex-col gap-2 h-full justify-center items-center">
+    <li>
+      <a href={contentfulLoginUrl.href} class="btn btn-primary w-56">
+        <IconContentful class="size-4" />
+        <span>Login with Contentful</span>
+      </a>
+    </li>
+    <li>
+      <a href={storyblokLoginUrl.href} class="btn btn-primary w-56">
+        <IconStoryblok class="size-4" />
+        <span>Login with Storyblok</span>
+      </a>
+    </li>
+    <li>
+      <a href={wordpressLoginUrl.href} class="btn btn-primary w-56">
+        <IconWordpress class="size-4" />
+        <span>Login with Wordpress</span>
+      </a>
+    </li>
+  </ul>
+</Layout>

@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "astro dev",
     "types": "astro sync && wrangler types .astro/worker.d.ts",
-    "build": "pnpm types && astro check && astro build"
+    "build": "pnpm types && astro check && astro build",
+    "migrate": "wrangler d1 migrations apply DB --remote"
   },
   "dependencies": {
     "@storyblok/management-api-client": "0.1.7",
@@ -16,9 +17,12 @@
   "devDependencies": {
     "@astrojs/check": "0.9.5",
     "@astrojs/cloudflare": "12.6.10",
+    "@tailwindcss/vite": "4.1.17",
     "@types/node": "24.10.1",
     "astro": "5.15.8",
+    "daisyui": "5.5.5",
     "prettier": "3.6.2",
+    "tailwindcss": "4.1.17",
     "typescript": "5.9.3",
     "vite-plugin-mkcert": "1.17.9",
     "wrangler": "4.47.0"

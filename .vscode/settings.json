@@ -10,6 +10,10 @@
   "prettier.printWidth": 120,
   "prettier.trailingComma": "none",
 
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
