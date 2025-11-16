@@ -1,4 +1,5 @@
 import type { Runtime } from "@astrojs/cloudflare";
+import * as env from "astro:env/server";
 import { defineMiddleware } from "astro:middleware";
 import { parse } from "valibot";
 import { Provider } from "~/lib/provider";
@@ -32,15 +33,15 @@ export const onRequest = defineMiddleware(async (ctx, next) => {
       name: "contentful",
       base: "https://be.contentful.com",
       scope: "content_management_manage",
-      clientId: ctx.locals.runtime.env.CONTENTFUL_CLIENT_ID,
-      clientSecret: ctx.locals.runtime.env.CONTENTFUL_CLIENT_SECRET
+      clientId: env.CONTENTFUL_CLIENT_ID,
+      clientSecret: env.CONTENTFUL_CLIENT_SECRET
     }),
     storyblok: new Provider({
       name: "storyblok",
       base: "https://app.storyblok.com",
       scope: "read_content write_content",
-      clientId: ctx.locals.runtime.env.STORYBLOK_CLIENT_ID,
-      clientSecret: ctx.locals.runtime.env.STORYBLOK_CLIENT_SECRET
+      clientId: env.STORYBLOK_CLIENT_ID,
+      clientSecret: env.STORYBLOK_CLIENT_SECRET
     })
   };
 
