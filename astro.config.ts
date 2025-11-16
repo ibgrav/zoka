@@ -10,8 +10,8 @@ export default defineConfig({
     imageService: "compile"
   }),
   vite: {
-    server: {
-      allowedHosts: [".ngrok-free.app"]
+    build: {
+      minify: false
     }
   }
 });

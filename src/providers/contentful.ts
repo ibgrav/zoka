@@ -8,9 +8,8 @@ interface OauthTokenResponse {
   error_description?: string;
 }
 
-export class StoryblokProvider implements Provider {
-  // TODO: implement US support
-  base = "https://app.storyblok.com";
+export class ContentfulProvider implements Provider {
+  base = "https://be.contentful.com";
 
   clientId: string;
   clientSecret: string;
@@ -25,13 +24,8 @@ export class StoryblokProvider implements Provider {
     url.searchParams.set("redirect_uri", redirectUri.href);
     url.searchParams.set("client_id", this.clientId);
     url.searchParams.set("response_type", "code");
-    url.searchParams.set("scope", "read_content write_content");
+    url.searchParams.set("scope", "content_management_manage");
     url.searchParams.set("state", state);
-
-    if (import.meta.env.DEV) {
-      url.searchParams.set("dev", "1");
-    }
-
     return url;
   }
 

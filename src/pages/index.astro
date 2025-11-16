@@ -11,6 +11,7 @@ const tokens = JSON.parse((session ? await Astro.locals.runtime.env.SESSION.get(
     <title>Astro</title>
   </head>
   <body>
+    <a href="/auth/contentful/login">Login with Contentful</a>
     <a href="/auth/storyblok/login">Login with Storyblok</a>
     <pre>{JSON.stringify({ session, tokens }, null, 2)}</pre>
   </body>
