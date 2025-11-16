@@ -1,8 +1,18 @@
-.DS_Store
-
+# build output
 dist/
+
+# generated
 .astro/
+.wrangler/
+
+# dependencies
 node_modules/
 
-*.env*
-!.env.example
+# logs
+*.log*
+
+# environment variables
+.env*
+
+# macOS-specific files
+.DS_Store

@@ -1,0 +1,26 @@
+{
+  "name": "zoka",
+  "main": "dist/_worker.js/index.js",
+  "compatibility_date": "2025-11-16",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "8652a4edf8564610ade446977c0681fb"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DATABASE",
+      "database_name": "zoka-sandbox",
+      "database_id": "1f662c96-a593-499c-9e6e-55a1dd52ec8f"
+    }
+  ]
+}

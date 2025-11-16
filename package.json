@@ -1,12 +1,25 @@
 {
-  "packageManager": "pnpm@9.14.2",
-  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.22.0",
   "scripts": {
-    "dev": "pnpm -F example dev",
-    "check": "biome check",
-    "format": "biome format --write"
+    "dev": "astro dev",
+    "build": "pnpm types && astro build",
+    "types": "wrangler types .astro/worker.d.ts && astro sync"
+  },
+  "dependencies": {
+    "@orpc/client": "1.11.2",
+    "@orpc/contract": "1.11.2",
+    "@orpc/openapi": "1.11.2",
+    "@orpc/server": "1.11.2",
+    "valibot": "1.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.4"
+    "@astrojs/cloudflare": "12.6.10",
+    "@astrojs/node": "9.5.0",
+    "@types/node": "24.10.1",
+    "astro": "5.15.8",
+    "prettier": "3.6.2",
+    "typescript": "5.9.3",
+    "wrangler": "4.47.0"
   }
 }
