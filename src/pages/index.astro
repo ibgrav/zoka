@@ -3,5 +3,5 @@ import Layout from "~/templates/layout.astro";
 ---
 
 <Layout title="Zoka">
-  <pre class="mockup-code w-full">{JSON.stringify({ session: Astro.locals.session }, null, 2)}</pre>
+  <pre class="mockup-code w-full">{JSON.stringify({ user: Astro.locals.user }, null, 2)}</pre>
 </Layout>

@@ -1,19 +1,9 @@
-import type { ColumnType, Generated, Selectable } from "kysely";
+import { Kysely, PostgresDialect } from "kysely";
+import type { DB } from "kysely-codegen";
+import { Pool } from "pg";
 
-export interface Database {
-  users: UserTable;
-}
-
-interface TrackedTable {
-  created_at: ColumnType<string, never, never>;
-  updated_at: ColumnType<string, never, never>;
-}
-
-export type User = Selectable<UserTable>;
-
-export interface UserTable extends TrackedTable {
-  id: Generated<number>;
-  contentful_user_id: string | null;
-  storyblok_user_id: string | null;
-  wordpress_user_id: string | null;
+export function createDatabase(connectionString: string) {
+  const dialect = new PostgresDialect({ pool: new Pool({ connectionString }) });
+  const database = new Kysely<DB>({ dialect });
+  return { dialect, database };
 }

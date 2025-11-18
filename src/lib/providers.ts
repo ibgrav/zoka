@@ -24,3 +24,11 @@ export const wordpress = new Provider({
   clientId: env.WORDPRESS_CLIENT_ID,
   clientSecret: env.WORDPRESS_CLIENT_SECRET
 });
+
+export const supabase = new Provider({
+  name: "supabase",
+  base: "https://api.supabase.com/v1/oauth",
+  scope: "",
+  clientId: env.SUPABASE_CLIENT_ID,
+  clientSecret: env.SUPABASE_CLIENT_SECRET
+});

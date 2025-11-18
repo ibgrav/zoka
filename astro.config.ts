@@ -19,10 +19,15 @@ export default defineConfig({
   },
   env: {
     schema: {
+      DATABASE_URL: envField.string({ context: "server", access: "secret" }),
+      SUPABASE_URL: envField.string({ context: "server", access: "secret" }),
+      SUPABASE_PUBLISHABLE_KEY: envField.string({ context: "server", access: "secret" }),
       CONTENTFUL_CLIENT_ID: envField.string({ context: "server", access: "secret" }),
       CONTENTFUL_CLIENT_SECRET: envField.string({ context: "server", access: "secret" }),
       STORYBLOK_CLIENT_ID: envField.string({ context: "server", access: "secret" }),
       STORYBLOK_CLIENT_SECRET: envField.string({ context: "server", access: "secret" }),
+      SUPABASE_CLIENT_ID: envField.string({ context: "server", access: "secret" }),
+      SUPABASE_CLIENT_SECRET: envField.string({ context: "server", access: "secret" }),
       WORDPRESS_CLIENT_ID: envField.string({ context: "server", access: "secret" }),
       WORDPRESS_CLIENT_SECRET: envField.string({ context: "server", access: "secret" })
     }

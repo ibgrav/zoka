@@ -16,3 +16,7 @@ node_modules/
 
 # macOS-specific files
 .DS_Store
+
+# supabase
+supabase/.temp
+supabase/.branches

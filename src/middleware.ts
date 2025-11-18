@@ -1,39 +1,33 @@
 import type { Runtime } from "@astrojs/cloudflare";
+import type { User } from "@supabase/supabase-js";
+import { DATABASE_URL } from "astro:env/server";
 import { defineMiddleware } from "astro:middleware";
-import { Kysely } from "kysely";
-import { D1Dialect } from "kysely-d1";
-import { parse } from "valibot";
-import type { Database } from "~/lib/database";
-import { Session } from "~/lib/schema";
+import { createDatabase } from "~/lib/database";
+import { createSupabase } from "~/lib/supabase";
 
 declare global {
   namespace App {
     interface Locals extends Runtime<Env> {
-      db: Kysely<Database>;
-      session: Session | null;
+      db: ReturnType<typeof createDatabase>;
+      sb: ReturnType<typeof createSupabase>;
+      user: User | null;
+      headers: Headers;
     }
   }
 }
 
 export const onRequest = defineMiddleware(async (ctx, next) => {
-  ctx.locals.db = new Kysely<Database>({
-    dialect: new D1Dialect({
-      database: ctx.locals.runtime.env.DB
-    })
-  });
+  ctx.locals.headers = new Headers();
+  ctx.locals.db = createDatabase(DATABASE_URL);
+  ctx.locals.sb = createSupabase(ctx.request.headers, ctx.locals.headers);
 
-  const cookie = ctx.cookies.get("session")?.value;
-  if (cookie) {
-    try {
-      const session = await ctx.locals.runtime.env.SESSION.get(cookie);
-      if (!session) throw new Error("Session not found");
-      ctx.locals.session = parse(Session, JSON.parse(session));
-    } catch (error) {
-      console.error(JSON.stringify({ error }));
-      ctx.cookies.delete("session");
-      ctx.locals.session = null;
-    }
+  ctx.locals.user = (await ctx.locals.sb.auth.getUser()).data.user;
+
+  const response = await next();
+
+  for (const [key, value] of ctx.locals.headers.entries()) {
+    response.headers.append(key, value);
   }
 
-  return next();
+  return response;
 });
