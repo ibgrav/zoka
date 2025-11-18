@@ -4,6 +4,7 @@ onlyBuiltDependencies:
   - supabase
   - workerd
 
-savePrefix: ''
+savePrefix: ""
+preferOffline: true
 
 useNodeVersion: 24.11.1
