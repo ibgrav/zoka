@@ -1,6 +1,6 @@
 import { type APIRoute } from "astro";
 
-export const GET: APIRoute = async ({ url, request, locals, redirect }) => {
+export const GET: APIRoute = async ({ url, locals, redirect }) => {
   const code = url.searchParams.get("code");
   const next = url.searchParams.get("next") || "/";
 
